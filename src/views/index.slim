@@ -1,0 +1,16 @@
+html ng-app="app"
+  head
+    title Phone book
+    meta charset="utf-8"
+
+    <% _.each(assets.css, function(file) { %>
+    link rel="stylesheet" type="text/css" href="<%= file %>"
+    <% }) %>
+
+    <% _.each(assets.js , function(file) { %>
+    script type="text/javascript" src="<%= file %>"
+    <% }) %>
+
+  body
+    center
+      h1 Application is loading...
