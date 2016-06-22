@@ -11,7 +11,6 @@
     "js/app/app.js",
     "js/app/routes.js",
 
-    "js/controllers/**/*",
-    "js/directives/**/*"
+    "js/controllers/index_ctrl.js"
   ]
 }

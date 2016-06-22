@@ -8,45 +8,7 @@ var gulp = require('gulp'),
     changed = require('gulp-changed'),
     debug = require('gulp-debug'),
     util = require('gulp-util'),
-    inject = require('gulp-inject'),
-    angularFilesort = require('gulp-angular-filesort');
-
-// gulp.task('compile-index', function () {
-//     var injectOptions = {
-//             relative: false, 
-//             addRootSlash: false, 
-//             ignorePath: 'build/'
-//         };
-
-//     return gulp
-//         .src('./src/views/index.slim')
-//         // .pipe(inject(
-//         //     gulp.src([
-//         //         './build/js/**/*.js',
-//         //         './build/css/**/*.css'
-//         //     ], {read: true}), injectOptions
-
-//         //     // gulp.src(['./build/css/**/*.css', './build/js/**/*.js'], {read: true})
-//         //     //     .pipe(angularFilesort())
-
-//         // ))
-
-//         .pipe(inject(
-//             gulp.src(['./build/css/**/*.css'], {read: true}), injectOptions
-//         ))
-//         // .pipe(inject(
-//         //     gulp.src(['./build/js/**/*.js'], {read: true}), injectOptions
-//         // ))
-//         .pipe(inject(
-//             gulp.src(['./build/js/**/*.js']).pipe(angularFilesort())
-//         ))
-
-//         .pipe(slim({
-//           pretty: true
-//         }))
-//         .pipe(debug({title: 'injected to index.html:'}))
-//         .pipe(gulp.dest('./build/'));
-// });
+    webserver = require('gulp-webserver');
 
 gulp.task('render-index', function() {
     var template = require('gulp-template'),
@@ -117,6 +79,15 @@ gulp.task('copy-vendor-js', function() {
         .pipe(gulp.dest('./build/js/'));
 });
 
+gulp.task('webserver', function() {
+  gulp.src('build')
+    .pipe(webserver({
+        livereload: false,
+        open: true,
+        port: 8080
+    }));
+});
+
 gulp.task('compile', [
     'compile-slim',
     'compile-sass',
@@ -132,5 +103,6 @@ gulp.task('compile:watch', function () {
   gulp.watch('./src/views/**/*.slim', ['compile-slim', 'render-index']);
   gulp.watch('./src/css/**/*.scss', ['compile-sass']);
   gulp.watch('./src/js/**/*.coffee', ['compile-coffee']);
+  gulp.start('webserver');
 });
 

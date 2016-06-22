@@ -3,6 +3,8 @@ html ng-app="app"
     title Phone book
     meta charset="utf-8"
 
+    base href="/"
+
     <% _.each(assets.css, function(file) { %>
     link rel="stylesheet" type="text/css" href="<%= file %>"
     <% }) %>
@@ -13,4 +15,5 @@ html ng-app="app"
 
   body
     center
-      h1 Application is loading...
+      h1 Application is loading ...
+    div ng-view=""

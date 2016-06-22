@@ -1,6 +1,6 @@
 dependencies = ['ngRoute']
 
-app = angular.module('app')
+this.app = angular.module('app', dependencies);
 
 app.run(['$http', '$rootScope', ($http, $rootScope) ->
   $http.defaults.headers.common['Content-Type'] = 'application/json'
@@ -9,11 +9,11 @@ app.run(['$http', '$rootScope', ($http, $rootScope) ->
   token = localStorage.getItem('user.token')
   $http.defaults.headers.common['X-User-Token'] = token
 
-  $http
-    .get('/api/status')
-    .then((response) =>
-      _.extend($rootScope, response.data)
-    )
+  # $http
+  #   .get('/api/status')
+  #   .then((response) =>
+  #     _.extend($rootScope, response.data)
+  #   )
 ])
 
 app.config(['$httpProvider', ($httpProvider) ->
@@ -45,7 +45,7 @@ app.config(['$routeProvider', ($routeProvider) ->
 
   $routeProvider
     .when('/', {
-      templateUrl: '/build/views/index/index.html',
-      controller: 'IndexCtrl',
+      templateUrl: '/main.html',
+      controller: 'IndexCtrl'
     })
 ])
