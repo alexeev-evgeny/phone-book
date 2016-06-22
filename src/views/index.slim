@@ -5,15 +5,16 @@ html ng-app="app"
 
     base href="/"
 
-    <% _.each(assets.css, function(file) { %>
-    link rel="stylesheet" type="text/css" href="<%= file %>"
-    <% }) %>
+    / inject:css
+    / endinject
 
-    <% _.each(assets.js , function(file) { %>
-    script type="text/javascript" src="<%= file %>"
-    <% }) %>
+    / inject:js
+    / endinject
 
   body
-    center
-      h1 Application is loading ...
-    div ng-view=""
+    .pb-app ng-view=""
+    .pb-app-load
+      h1.pb-app-load__title 
+        | Application is loading ...
+    
+    

@@ -1,7 +1,6 @@
-body {
-	background-color: #888;
-	font-family: sans-serif;
-}
-h1 {
-	color: #fff;
-}
+@import 'normalize.css';
+
+@import 'main.scss';
+@import 'contacts/list.scss';
+@import 'contacts/view.scss';
+

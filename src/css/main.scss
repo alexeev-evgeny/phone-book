@@ -1,0 +1,28 @@
+body {
+	background-color: #e5e5e5;
+	font-family: sans-serif;
+}
+
+.pb-app {
+    display: block;
+    background-color: #fff;
+}
+
+/*===== APP LOADING =====*/
+.pb-app-load {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    &__title {
+        display: block;
+        text-align: center;
+        font-size: 32px;
+        line-height: normal;
+        color: #999;
+    }
+}
+/*===== APP LOADING - END =====*/

@@ -1,37 +1,21 @@
 'use strict';
 
-var gulp = require('gulp'),
+var debug = require('gulp-debug'),
+    gulp = require('gulp'),
     slim = require("gulp-slim"), 
     sass = require('gulp-sass'),
     coffee = require('gulp-coffee'),
+    concat = require('gulp-concat'),
     sourcemaps = require('gulp-sourcemaps'),
     changed = require('gulp-changed'),
-    debug = require('gulp-debug'),
     util = require('gulp-util'),
+    inject = require('gulp-inject'),
+    angularOrder = require('gulp-angular-order'),
     webserver = require('gulp-webserver');
-
-gulp.task('render-index', function() {
-    var template = require('gulp-template'),
-        contents = require('fs').readFileSync('assets.json', 'utf8'),
-        assets = JSON.parse(contents);
-
-  return gulp
-    .src('./src/views/index.slim')
-    .pipe(template({assets: assets}))
-    .pipe(slim({
-      pretty: true
-    }))
-    .on('error', function(message) {
-      util.log(util.colors.red(message));
-      this.emit('end');
-    })
-    .pipe(debug({title: 'render-index:'}))
-    .pipe(gulp.dest('./build/'));
-});
 
 gulp.task('compile-slim', function(){
     return gulp
-        .src("./src/views/*.slim")
+        .src(['./src/views/*.slim', '!index.slim'])
         .pipe(slim({
           pretty: true
         }))
@@ -51,15 +35,16 @@ gulp.task('compile-coffee', function() {
     return gulp
         .src(['src/**/*.coffee'])
         .pipe(sourcemaps.init())
-        .pipe(changed('build/js', {extension: '.js'}))
+        .pipe(changed('build/', {extension: '.js'}))
         .pipe(coffee())
         .on('error', function(message) {
             util.log(message);
             this.end();
         })
         .pipe(sourcemaps.write())
+        .pipe(concat('app.js'))
         .pipe(debug({title: 'compile-coffee:'}))
-        .pipe(gulp.dest('./build/'));
+        .pipe(gulp.dest('./build/js/'));
 });
 
 gulp.task('copy-vendor-css', function() {
@@ -79,8 +64,23 @@ gulp.task('copy-vendor-js', function() {
         .pipe(gulp.dest('./build/js/'));
 });
 
+gulp.task('compile-index', function(){
+    var injectOptions = {ignorePath: '/build', addRootSlash: false};
+    return gulp
+        .src('./src/views/index.slim')
+        .pipe(inject(
+            gulp.src(['./build/js/**/*.js', './build/css/app.css'], {read: true})
+                .pipe(angularOrder()),
+                injectOptions
+        ))
+        .pipe(slim({
+            pretty: true
+        }))
+        .pipe(gulp.dest('./build/'))
+});
+
 gulp.task('webserver', function() {
-  gulp.src('build')
+  gulp.src(['build', 'data'])
     .pipe(webserver({
         livereload: false,
         open: true,
@@ -89,18 +89,20 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('compile', [
-    'compile-slim',
-    'compile-sass',
-    'compile-coffee',
+        'compile-slim',
+        'compile-sass',
+        'compile-coffee',
 
-    'copy-vendor-js',
-    'copy-vendor-css',
-
-    'render-index'
-]);
+        'copy-vendor-js',
+        'copy-vendor-css'
+    ], 
+    function(){
+        gulp.start(['compile-index'])
+    }
+);
 
 gulp.task('compile:watch', function () {
-  gulp.watch('./src/views/**/*.slim', ['compile-slim', 'render-index']);
+  gulp.watch('./src/views/**/*.slim', ['compile-slim', 'compile-index']);
   gulp.watch('./src/css/**/*.scss', ['compile-sass']);
   gulp.watch('./src/js/**/*.coffee', ['compile-coffee']);
   gulp.start('webserver');
