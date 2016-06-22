@@ -1,18 +1,21 @@
 'use strict';
 
-var gulp = require('gulp'),
+var debug = require('gulp-debug'),
+    del = require('del'),
+    gulp = require('gulp'),
     slim = require("gulp-slim"), 
     sass = require('gulp-sass'),
     coffee = require('gulp-coffee'),
+    concat = require('gulp-concat'),
     sourcemaps = require('gulp-sourcemaps'),
     changed = require('gulp-changed'),
-    debug = require('gulp-debug'),
     util = require('gulp-util'),
+    angularOrder = require('gulp-angular-order'),
     webserver = require('gulp-webserver');
 
 gulp.task('render-index', function() {
     var template = require('gulp-template'),
-        contents = require('fs').readFileSync('assets.json', 'utf8'),
+        contents = require('fs').readFileSync('config/assets.json', 'utf8'),
         assets = JSON.parse(contents);
 
   return gulp
@@ -31,7 +34,7 @@ gulp.task('render-index', function() {
 
 gulp.task('compile-slim', function(){
     return gulp
-        .src("./src/views/*.slim")
+        .src(['./src/views/*.slim', '!index.slim'])
         .pipe(slim({
           pretty: true
         }))
@@ -79,8 +82,28 @@ gulp.task('copy-vendor-js', function() {
         .pipe(gulp.dest('./build/js/'));
 });
 
+gulp.task('concat-js', function() {
+    if (gulp.src('./build/js/app.js')){
+        util.log('Файл есть!!')
+        del('./build/js/app.js').then(
+            gulp.src('./build/js/*.js')
+                .pipe(angularOrder())
+                .pipe(concat('app.js'))
+                .pipe(gulp.dest('./build/js/'))
+        )
+    }
+    else {
+        util.log('Файла нет')
+        gulp.src('./build/js/*.js')
+            .pipe(angularOrder())
+            .pipe(concat('app.js'))
+            .pipe(gulp.dest('./build/js/'))
+    }
+
+});
+
 gulp.task('webserver', function() {
-  gulp.src('build')
+  gulp.src(['build', 'data'])
     .pipe(webserver({
         livereload: false,
         open: true,
@@ -95,6 +118,8 @@ gulp.task('compile', [
 
     'copy-vendor-js',
     'copy-vendor-css',
+
+    'concat-js',
 
     'render-index'
 ]);

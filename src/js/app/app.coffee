@@ -40,12 +40,3 @@ app.config(['$httpProvider', ($httpProvider) ->
 app.config(['$locationProvider', ($locationProvider) ->
   $locationProvider.html5Mode(true)
 ])
-
-app.config(['$routeProvider', ($routeProvider) ->
-
-  $routeProvider
-    .when('/', {
-      templateUrl: '/main.html',
-      controller: 'IndexCtrl'
-    })
-])

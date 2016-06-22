@@ -1,9 +1,8 @@
-# app.config(['$routeProvider', ($routeProvider) ->
+app.config(['$routeProvider', ($routeProvider) ->
 
-#   $routeProvider
-
-#     .when('/', {
-#       templateUrl: '/build/views/index/index.html',
-#       controller: 'IndexCtrl',
-#     })
-# ])
+  $routeProvider
+    .when('/', {
+      templateUrl: '/main.html',
+      controller: 'IndexCtrl'
+    })
+])

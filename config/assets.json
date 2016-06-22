@@ -1,0 +1,16 @@
+{
+  "css": [
+    "css/normalize.css",
+    "css/app.css"
+  ],
+  
+  "js": [
+    "js/angular.js",
+    "js/angular-route.js",
+
+    "js/app/app.js",
+    "js/app/routes.js",
+
+    "js/controllers/index_ctrl.js"
+  ]
+}
