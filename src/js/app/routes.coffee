@@ -2,7 +2,7 @@ app.config(['$routeProvider', ($routeProvider) ->
 
   $routeProvider
     .when('/', {
-      templateUrl: '/contacts.html',
+      templateUrl: 'views/contacts/list.html',
       controller: 'IndexCtrl'
     })
 ])

@@ -1,0 +1,24 @@
+div ng-include="'views/layout/head.html'"
+
+.pb-wrap
+  .pb-list
+    .pb-list__row ng-repeat="item in contacts"
+      .pb-list__col
+        .pb-list__avatar {
+          style="background-image: url('{{item.avatar}}')"
+        }
+      .pb-list__col
+        .pb-list__text
+          | {{item.email}}
+
+      .pb-list__col
+        .pb-list__text
+          | {{item.phone}}
+
+      .pb-list__col
+        .pb-list__icon.mdi {
+          ng-class="{
+            'mdi-star-outline': item.favorite == true,
+            'mdi-star': item.favorite == false
+          }"
+        } 

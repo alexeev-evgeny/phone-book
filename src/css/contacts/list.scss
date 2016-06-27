@@ -2,5 +2,9 @@
 .pb-contacts {
     display: block;
     margin: 0 auto;
+
+    &__row {
+    	display: block;
+    }
 }
 /*===== CONTACTS LIST - END =====*/
