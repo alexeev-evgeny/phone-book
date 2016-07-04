@@ -31,7 +31,7 @@ gulp.task('compile-slim', function(){
 // ==========
 gulp.task('compile-sass', function () {
     return gulp
-        .src('./src/css/*')
+        .src('./src/css/app.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(debug({title: 'compile-scss:'}))
         .pipe(gulp.dest('./build/css/'));

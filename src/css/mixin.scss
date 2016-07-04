@@ -1,0 +1,130 @@
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} { @content; }
+  @-moz-keyframes #{$name} { @content; }
+  @-o-keyframes #{$name} { @content; }
+  @keyframes #{$name} { @content; }
+}
+@mixin animation-name($name...) {
+  -o-animation-name: $name;
+  -moz-animation-name: $name;
+  -webkit-animation-name: $name;
+  animation-name: $name;
+}
+@mixin animation-duration($duration...) {
+  -o-animation-duration: $duration;
+  -moz-animation-duration: $duration;
+  -webkit-animation-duration: $duration;
+  animation-duration: $duration;
+}
+@mixin animation-duration($duration...) {
+  -o-animation-duration: $duration;
+  -moz-animation-duration: $duration;
+  -webkit-animation-duration: $duration;
+  animation-duration: $duration;
+}
+@mixin animation-timing-function($timing...) {
+  -o-animation-timing-function: $timing;
+  -moz-animation-timing-function: $timing;
+  -webkit-animation-timing-function: $timing;
+  animation-timing-function: $timing;
+}
+@mixin animation-iteration-count($count...) {
+  -o-animation-iteration-count: $count;
+  -moz-animation-iteration-count: $count;
+  -webkit-animation-iteration-count: $count;
+  animation-iteration-count: $count;
+}
+@mixin animation-direction($direction...) {
+  -o-animation-direction: $direction;
+  -moz-animation-direction: $direction;
+  -webkit-animation-direction: $direction;
+  animation-direction: $direction;
+}
+@mixin animation-fill-mode($fill...) {
+  -o-animation-fill-mode: $fill;
+  -moz-animation-fill-mode: $fill;
+  -webkit-animation-fill-mode: $fill;
+  animation-fill-mode: $fill;
+}
+@mixin animation-play-state($state...) {
+  -o-animation-play-state: $state;
+  -moz-animation-play-state: $state;
+  -webkit-animation-play-state: $state;
+  animation-play-state: $state;
+}
+@mixin animation($animation...) {
+  -o-animation: $animation;
+  -moz-animation: $animation;
+  -webkit-animation: $animation;
+  animation: $animation;
+}
+@mixin transition($transforms) {
+     -moz-transition: $transforms;
+       -o-transition: $transforms;
+      -ms-transition: $transforms;
+  -webkit-transition: $transforms;
+          transition: $transforms;
+}
+@mixin transform($transforms) {
+     -moz-transform: $transforms;
+       -o-transform: $transforms;
+      -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+          transform: $transforms;
+}
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+@mixin scale($scale) {
+   @include transform(scale($scale));
+}
+@mixin translate ($x, $y) {
+   @include transform(translate($x, $y));
+}
+@mixin skew ($x, $y) {
+   @include transform(skew(#{$x}deg, #{$y}deg));
+}
+@mixin transform-origin ($origin) {
+    moz-transform-origin: $origin;
+       -o-transform-origin: $origin;
+      -ms-transform-origin: $origin;
+  -webkit-transform-origin: $origin;
+          transform-origin: $origin;
+}
+@mixin apperanceAnimation ($name, $defaultPositionX, $defaultPositionY) {
+  @include keyframes ($name) {
+    0% {
+      transform: translate($defaultPositionX, $defaultPositionY);
+      opacity: 0;
+    }
+    35% {
+      transform: translate(0, 0);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+@mixin no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin linear-gradient($color1,$color2){
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, $color1),
+        clor-stop(1, $color2)
+    );
+    background-image: -o-linear-gradient(bottom, $color1 0%, $color2 100%);
+    background-image: -moz-linear-gradient(bottom, $color1 0%, $color2 100%);
+    background-image: -webkit-linear-gradient(bottom, $color1 0%, $color2 100%);
+    background-image: -ms-linear-gradient(bottom, $color1 0%, $color2 100%);
+    background-image: linear-gradient(to bottom, $color1 0%, $color2 100%);
+}

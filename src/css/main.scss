@@ -1,5 +1,10 @@
+$color-light-blue: #02abd1;
+$list-hightlight-color: #02abd1;
+$background-grey: #e5e5e5;
+$color-orange: #FBC02D;
+
 body {
-    background-color: #e5e5e5;
+    background-color: $background-grey;
     font-family: sans-serif;
     overflow-x: hidden;
 }
@@ -22,12 +27,15 @@ body {
 .pb-app {
     display: block;
     position: relative;
+    padding-top: 50px;
+    background-color: $background-grey;
 }
 .pb-wrap {
     width: 960px;
     margin: 0 auto;
     position: relative;
 }
+
 .pb-indent-top-m {
     margin-top: 30px;
 }
@@ -44,11 +52,14 @@ body {
     width: 100%;
     padding: 11px 20px;
     box-sizing: border-box;
-    background-color: #0288d1;
+    background-color: $color-light-blue;
     text-align: justify;
     text-justify: newspaper;
-    -webkit-box-shadow: rgba(0,0,0,0.3) 0 1px 4px 0;
     box-shadow: rgba(0,0,0,0.3) 0 1px 4px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
 
     &__wrap {
         display: block;
@@ -98,43 +109,72 @@ body {
     &__row {
         display: block;
         margin-top: 5px;
-        padding: 5px 10px;
+        padding: 5px 0;
         font-size: 0;
         line-height: 0;
+        cursor: pointer;
         text-align: left;
         background-color: #fff;
-        -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
-        box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 4px rgba(0,0,0,.24);
+        box-shadow: 0 0 2px rgba(0,0,0,.12),
+                    0 2px 4px rgba(0,0,0,.24);
+        @include transition(margin ease 0.3s);
 
+        &:hover {
+            margin-left: -5px;
+            margin-right: -5px;
+            box-shadow: 0 0 2px rgba(0,0,0,.12),
+                        0 2px 4px rgba(0,0,0,.24),
+                        inset 5px 0 0 0 $list-hightlight-color;
+        }
         &:first-child {
             margin-top: 0;
         }
     }
-    &__col {
+    &__col{
         display: inline-block;
         vertical-align: middle;
+        width: 33.333333%;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+
+        &.pb-list__col--align-left {
+            text-align: left;
+        }
+        &.pb-list__col--align-right {
+            text-align: right;
+        }
+    }
+    &__item {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+        margin-left: 10px;
         font-size: 16px;
         line-height: normal;
     }
     &__avatar {
-        display: block;
         width: 40px;
         height: 40px;
         background-position: center;
         background-repeat: no-repeat;
+        background-color: #e5e5e5;
         background-size: 40px;
         border-radius: 40px;
     }
-    &__text {
-        display: block;
-        font-size: 16px;
+    &__text,
+    &__name {
+        font-size: 14px;
         line-height: normal;
+        color: #333;
+    }
+    &__name {
+        font-weight: bold;
     }
     &__icon {
-        display: block;
         font-size: 28px;
         line-height: normal;
-        color: #000;
+        color: $color-orange;
     }
 }
 /*===== CONTACTS - END =====*/
