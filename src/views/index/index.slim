@@ -1,0 +1,11 @@
+.pb-head ng-include="'views/layout/head.html'"
+
+.pb-main-slider ng-class="{'shifted-to-left': pageShifted}"
+  .pb-main-slider__page {
+    ng-class="{'pb-scroll-off': pageShifted}"
+    ng-include="'views/contacts/list.html'"
+  } 
+  .pb-main-slider__page {
+    ng-if="openedContact"
+    ng-include="'views/contacts/view.html'"
+  }

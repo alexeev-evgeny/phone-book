@@ -1,0 +1,69 @@
+.pb-wrap
+  .pb-view#contactsView
+
+    .pb-view__head
+      .pb-view__head__item
+        button.pb-view__button-back {
+          ng-click="closeContact()"
+        }
+          | back
+      .pb-view__head__item
+        .pb-view__icon-star.mdi {
+          ng-class="{
+            'mdi-star-outline': openedContact.favorite == true,
+            'mdi-star': openedContact.favorite == false
+          }"
+        } 
+
+    .pb-view__body
+      .pb-view__col-1-4
+        img.pb-view__avatar ng-src="{{::openedContact.avatar}}"
+
+      .pb-view__col-3-4
+        .pb-view__row
+          .pb-view__title
+            | Name:
+          .pb-view__data
+            | {{::openedContact.name}}
+
+        .pb-view__row
+          .pb-view__title
+            | Email:
+          .pb-view__data
+            | {{::openedContact.email}}
+
+        .pb-view__row
+          .pb-view__title
+            | Phone:
+          .pb-view__data
+            | {{::openedContact.phone}}
+
+        .pb-view__row.pb-view__separator
+
+        .pb-view__row
+          .pb-view__title
+            | Username:
+          .pb-view__data
+            | {{::openedContact.username}}
+
+        .pb-view__row
+          .pb-view__title
+            | Company:
+          .pb-view__data
+            | {{::openedContact.company.bs}}
+
+        .pb-view__row
+          .pb-view__title
+            | Catchphrase:
+          .pb-view__data
+            | {{::openedContact.company.catchPhrase}}
+
+        .pb-view__row
+          .pb-view__title
+            | Website:
+          .pb-view__data
+            a {
+              target="_blank"
+              ng-href="http://{{::openedContact.website}}"
+            } 
+              | {{::openedContact.website}}

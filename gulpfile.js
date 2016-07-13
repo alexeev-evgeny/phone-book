@@ -94,6 +94,18 @@ gulp.task('copy-vendor-fonts', function() {
 });
 
 // ==========
+// COPY IMAGES
+// ==========
+
+gulp.task('copy-img', function() {
+  return gulp
+    .src(['./src/img/**/*'])
+    .pipe(changed('build/img'))
+    .pipe(debug({title: 'copy-img:'}))
+    .pipe(gulp.dest('build/img'));
+});
+
+// ==========
 // COMPILE INDEX 
 // ==========
 gulp.task('compile-index', function(){
@@ -133,10 +145,10 @@ gulp.task('compile', [
         'compile-slim',
         'compile-sass',
         'compile-coffee',
-
+        'copy-img',
         'copy-vendor-js',
         'copy-vendor-css',
-        'copy-vendor-fonts'
+        'copy-vendor-fonts',
     ], 
     function(){
         gulp.start(['compile-index'])
@@ -146,7 +158,7 @@ gulp.task('compile', [
 // ==========
 // COMPILE ALL & START WEBSERVER 
 // ==========
-gulp.task('compile:watch', function () {
+gulp.task('start', function () {
     gulp.start('compile');
     gulp.watch('./src/views/**/*.slim', ['compile-slim', 'compile-index']);
     gulp.watch('./src/css/**/*.scss', ['compile-sass']);

@@ -1,0 +1,128 @@
+.pb-view {
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 
+                0 2px 4px rgba(0, 0, 0, 0.24), 
+                inset 5px 0 0 0 $list-hightlight-color;
+
+    &__head {
+        display: block;
+        padding: 15px;
+        text-align: left;
+        line-height: 0;
+        position: relative;
+
+        &__item {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: normal;
+        }
+    }
+    &__body {
+        display: block;
+        padding: 0 15px 15px;
+        font-size: 0;
+        line-height: 0;
+    }
+    &__col-1-3,
+    &__col-2-3,
+    &__col-1-4,
+    &__col-3-4 {
+        display: inline-block;
+        vertical-align: top;
+        padding-left: 15px;
+        padding-right: 15px;
+        box-sizing: border-box;
+        font-size: 16px;
+        line-height: normal;
+
+        &:first-child {
+            padding-left: 0;
+            padding-right: 15px;
+        }
+        &:last-child {
+            padding-right: 0;
+            padding-left: 15px;
+        }
+    }
+    &__col-1-3 {
+        width: 33.333333%;
+    }
+    &__col-2-3 {
+        width: 66.666666%;
+    }
+    &__col-1-4 {
+        width: 25%;
+    }
+    &__col-3-4 {
+        width: 75%;
+    }
+    &__button-back {
+        display: block;
+        padding: 4px 15px;
+        text-align: center;
+        font-size: 20px;
+        color: $color-text-dark;
+        border: none;
+        background-color: #fff;
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
+                    0 3px 1px -2px rgba(0,0,0,0.12),
+                    0 1px 5px 0 rgba(0,0,0,0.2);
+        @include transition(background-color ease 0.5s);
+
+        &:focus {
+            outline: none;
+        }
+        &:active {
+            background-color: $color-light-grey;
+        }
+    }
+    &__avatar {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        background-color: $color-light-grey;
+        box-sizing: border-box;
+    }
+    &__name {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 16px;
+        line-height: normal;
+        color: $color-text;
+        font-weight: bold;
+    }
+    &__row {
+        display: block;
+        text-align: left;
+        margin-bottom: 15px;
+    }
+    &__separator {
+        border-bottom: 1px solid $color-light-grey;
+    }
+    &__title,
+    &__data {
+        display: block;
+        text-align: left;
+        font-size: 16px;
+        line-height: 22px;
+        color: $color-text;
+    }
+    &__title {
+
+    }
+    &__data {
+        font-weight: normal;
+        color: $color-text-dark;
+    }
+    &__icon-star {
+        display: block;
+        font-size: 28px;
+        line-height: normal;
+        color: #FBC02D;
+        cursor: pointer;
+    }
+    
+}

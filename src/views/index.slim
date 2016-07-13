@@ -1,7 +1,12 @@
 html ng-app="app"
   head
-    title Phone book
+    title 
+      | Contacts
     meta charset="utf-8"
+    link {
+      rel="shortcut icon" 
+      href="img/favicon.png"
+    } 
 
     base href="/"
 
@@ -16,4 +21,3 @@ html ng-app="app"
       h1.pb-load__title 
         | Application is loading ...
     .pb-app ng-view=""
-    
