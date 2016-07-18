@@ -2,7 +2,7 @@
   .pb-list
     a.pb-list__row {
       ng-repeat="item in contacts"
-      ng-click="openContact($index)"
+      ng-href="/view/{{item._id}}"
     } 
       .pb-list__col.pb-list__col--align-left
         .pb-list__item.pb-list__avatar {

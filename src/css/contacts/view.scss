@@ -1,6 +1,6 @@
 .pb-view {
     display: block;
-    margin-top: 30px;
+    // margin-top: 30px;
     margin-bottom: 30px;
     background-color: #fff;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 
@@ -59,12 +59,15 @@
     &__col-3-4 {
         width: 75%;
     }
-    &__button-back {
+    &__button {
         display: block;
-        padding: 4px 15px;
+        padding: 0 15px;
         text-align: center;
-        font-size: 20px;
+        font-size: 26px;
+        line-height: 30px;
         color: $color-text-dark;
+        cursor: pointer;
+        text-decoration: none;
         border: none;
         background-color: #fff;
         box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
@@ -118,11 +121,7 @@
         color: $color-text-dark;
     }
     &__icon-star {
-        display: block;
-        font-size: 28px;
-        line-height: normal;
         color: #FBC02D;
-        cursor: pointer;
     }
     
 }

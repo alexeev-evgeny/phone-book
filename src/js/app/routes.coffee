@@ -1,12 +1,14 @@
 app.config(['$routeProvider', ($routeProvider) ->
-
   $routeProvider
     .when('/', {
-      templateUrl: 'views/index/index.html',
+      templateUrl: 'views/contacts/list.html',
       controller: 'IndexCtrl'
     })
-    # .when('/:id/view', {
-    #   templateUrl: 'views/contacts/view.html',
-    #   controller: 'IndexCtrl'
-    # })
+    .when('/view/:id', {
+      templateUrl: 'views/contacts/view.html',
+      controller: 'ViewCtrl'
+    })
+  .otherwise({
+    'redirectTo': '/'
+  })
 ])

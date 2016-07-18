@@ -11,7 +11,8 @@ body {
     height: 100%;
     background-color: $background-grey;
     font-family: sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 .pb-load {
     display: block;
@@ -32,7 +33,7 @@ body {
 .pb-app {
     display: block;
     position: relative;
-    height: 100%;
+    padding-top: 30px;
     background-color: $background-grey;
 }
 .pb-wrap {

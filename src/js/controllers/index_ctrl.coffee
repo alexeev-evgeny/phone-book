@@ -1,26 +1,29 @@
-app.controller 'IndexCtrl', ($scope, $http) ->
+app.controller 'IndexCtrl', ($scope, $http, $location, $log) ->
+  console.log 'INDEXCTRL '+$scope
 
   $scope.initialize = () ->
     $scope.contacts = {}
-    $scope.getAll()
-    $scope.pageShifted = false
-    $scope.openedContact = null
+    $scope.load()
 
-  $scope.getAll = () ->
-    url = 'https://phonebook-c9b5.restdb.io/rest/contacts'
+  $scope.load = () ->
+    url = 'https://phonebook-c9b5.restdb.io/rest/contacts?q={}&h={
+      "$fields": {
+        "id": 1,
+        "_id": 1,
+        "avatar": 1,
+        "name": 1,
+        "email": 1,
+        "phone": 1
+      } }'
     $http
       .get(url)
       .then(
         (response) ->
           if response.data.length > 0
             $scope.contacts = response.data
-            console.log $scope.contacts
         (error) ->
-          console.log 'ERROR: '+error
+          $log.error 'ERROR: '+error
       )
-  $scope.openContact = (id) ->
-    $scope.pageShifted = true
-    $scope.openedContact = $scope.contacts[id]
 
   $scope.closeContact = () ->
     $scope.pageShifted = false
