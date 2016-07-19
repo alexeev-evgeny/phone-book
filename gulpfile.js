@@ -42,7 +42,7 @@ gulp.task('compile-sass', function () {
 // ==========
 gulp.task('compile-coffee', function() {
     return gulp
-        .src(['src/**/*.coffee'])
+        .src(['src/js/**/*.coffee'])
         .pipe(sourcemaps.init())
         .pipe(changed('build/', {extension: '.js'}))
         .pipe(coffee())

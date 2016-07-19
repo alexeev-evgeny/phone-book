@@ -1,22 +1,8 @@
-app.controller 'ViewCtrl', ($scope, $http, $routeParams, $log) ->
-  console.log 'VIEWCTRL '+$scope
+app.controller 'ViewCtrl', ($scope, $http, $routeParams, $log, dbService) ->
 
-  $scope.initialize = () ->
-    $scope.openedContact = null
-    $scope.load()
+  $scope.openedContact = null
+  $scope.url = 'https://phonebook-c9b5.restdb.io/rest/contacts/'+$routeParams.id
 
-    $scope.$watch('currentContactId', -> $scope.load())
-
-  $scope.load = () ->
-    url = 'https://phonebook-c9b5.restdb.io/rest/contacts/'+$routeParams.id
-    $http
-      .get(url)
-      .then(
-        (response) ->
-          if response.data
-            $scope.openedContact = response.data
-        (error) ->
-          $log.error 'ERROR: '+error
-      )
-
-  $scope.initialize()
+  dbService.load($scope.url).then((data) ->
+    $scope.openedContact = data
+  )
