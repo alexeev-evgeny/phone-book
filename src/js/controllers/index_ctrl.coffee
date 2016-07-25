@@ -1,4 +1,4 @@
-app.controller 'IndexCtrl', ($scope, $log, dbService) ->
+app.controller 'IndexCtrl', ($scope, dbService) ->
 
   $scope.contacts = {}
   $scope.url = 'https://phonebook-c9b5.restdb.io/rest/contacts?q={}&h={

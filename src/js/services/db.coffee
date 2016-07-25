@@ -14,10 +14,10 @@ app.service 'dbService', ($http, $log) ->
     $http
       .put(url, data)
       .success((data, status, headers, config) ->
-
+        $log.info 'DATA SAVE: successful'
       )
       .error((data, status, header, config) ->
-        $log.error 'ERROR: '+status
+        $log.error 'DATA SAVE ERROR: '+status
       )
 
   return @

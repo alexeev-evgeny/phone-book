@@ -8,7 +8,11 @@ app.config(['$routeProvider', ($routeProvider) ->
       templateUrl: 'views/contacts/view.html',
       controller: 'ViewCtrl'
     })
-  .otherwise({
-    'redirectTo': '/'
-  })
+    .when('/edit/:id', {
+      templateUrl: 'views/contacts/edit.html',
+      controller: 'EditCtrl'
+    })
+    .otherwise({
+      'redirectTo': '/'
+    })
 ])

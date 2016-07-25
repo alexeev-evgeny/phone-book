@@ -3,6 +3,7 @@ $list-hightlight-color: #3F51B5;
 $background-grey: #e5e5e5;
 $color-orange: #FBC02D;
 $color-light-grey: #e5e5e5;
+$color-green: #65c765;
 
 $color-text: #999;
 $color-text-dark: #333;
@@ -81,5 +82,22 @@ body {
     }
     &.shifted-to-left {
         @include transform(translateX(-100vw));
+    }
+}
+
+// INPUT
+.pb-input {
+    width: 100%;
+    padding: 4px 0 5px;
+    background-color: #fff;
+    border: none;
+    border-bottom: 1px solid $color-light-grey;
+    font-size: 16px;
+    line-height: 20px;
+    @include transition(border ease 0.4s);
+
+    &:focus {
+        outline: none;
+        border-bottom: 1px solid $color-green;
     }
 }

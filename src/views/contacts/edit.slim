@@ -14,8 +14,8 @@
           }"
         }
       .pb-view__head__item
-        a.pb-view__button.pb-view__icon-edit.mdi.mdi-border-color {
-          ng-href="edit/{{::openedContact._id}}"
+        .pb-view__button.pb-view__button--green.mdi.mdi-content-save {
+          ng-click="save()"
         }
 
     .pb-view__body
@@ -27,46 +27,61 @@
           .pb-view__title
             | Name:
           .pb-view__data
-            | {{::openedContact.name}}
+            input.pb-input {
+              type="text"
+              ng-model="openedContact.name"
+            }
 
         .pb-view__row
           .pb-view__title
             | Email:
           .pb-view__data
-            | {{::openedContact.email}}
+            input.pb-input {
+              type="text"
+              ng-model="openedContact.email"
+            }
 
         .pb-view__row
           .pb-view__title
             | Phone:
           .pb-view__data
-            | {{::openedContact.phone}}
-
-        .pb-view__row.pb-view__separator
+            input.pb-input {
+              type="text"
+              ng-model="openedContact.phone"
+            }
 
         .pb-view__row
           .pb-view__title
             | Username:
           .pb-view__data
-            | {{::openedContact.username}}
+            input.pb-input {
+              type="text"
+              ng-model="openedContact.username"
+            }
 
         .pb-view__row
           .pb-view__title
             | Company:
           .pb-view__data
-            | {{::openedContact.company.bs}}
+            input.pb-input {
+              type="text"
+              ng-model="openedContact.company.bs"
+            }
 
         .pb-view__row
           .pb-view__title
             | Catchphrase:
           .pb-view__data
-            | {{::openedContact.company.catchPhrase}}
+            input.pb-input {
+              type="text"
+              ng-model="openedContact.company.catchPhrase"
+            }
 
         .pb-view__row
           .pb-view__title
             | Website:
           .pb-view__data
-            a {
-              target="_blank"
-              ng-href="http://{{::openedContact.website}}"
-            } 
-              | {{::openedContact.website}}
+            input.pb-input {
+              type="text"
+              ng-model="openedContact.website"
+            }

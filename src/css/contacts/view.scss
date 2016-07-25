@@ -1,6 +1,5 @@
 .pb-view {
     display: block;
-    // margin-top: 30px;
     margin-bottom: 30px;
     background-color: #fff;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 
@@ -18,6 +17,7 @@
             display: inline-block;
             vertical-align: middle;
             line-height: normal;
+            margin-right: 5px;
         }
     }
     &__body {
@@ -81,6 +81,10 @@
         &:active {
             background-color: $color-light-grey;
         }
+        &--green {
+            background-color: $color-green;
+            color: #fff;
+        }
     }
     &__avatar {
         display: block;
@@ -113,9 +117,6 @@
         line-height: 22px;
         color: $color-text;
     }
-    &__title {
-
-    }
     &__data {
         font-weight: normal;
         color: $color-text-dark;
@@ -123,5 +124,8 @@
     &__icon-star {
         color: #FBC02D;
     }
-    
+    &__icon-edit:before {
+        position: relative;
+        top: 2px;
+    }
 }

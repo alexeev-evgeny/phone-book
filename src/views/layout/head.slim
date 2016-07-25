@@ -1,7 +1,9 @@
 .pb-head-box
   .pb-head__wrap.pb-wrap
     .pb-head__col.pb__col--align-left
-      .pb-head__title
+      a.pb-head__title {
+      	ng-href="/"
+      }
         | Contacts
     .pb-head__col.pb__col--align-right ng-if="!openedContact"
       .pb-head__button.mdi.mdi-sort-alphabetical 
