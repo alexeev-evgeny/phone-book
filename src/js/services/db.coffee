@@ -17,7 +17,17 @@ app.service 'dbService', ($http, $log) ->
         $log.info 'DATA SAVE: successful'
       )
       .error((data, status, header, config) ->
-        $log.error 'DATA SAVE ERROR: '+status
+        $log.error 'DATA SAVE ERROR: '+status+' '+data
+      )
+
+  @add = (url, data) =>
+    $http
+      .post(url, data)
+      .success((data, status, headers, config) ->
+        $log.info 'DATA SAVE: successful'
+      )
+      .error((data, status, header, config) ->
+        $log.error 'DATA SAVE ERROR: '+status+' '+data
       )
 
   return @

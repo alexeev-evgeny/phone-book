@@ -6,5 +6,10 @@
       }
         | Contacts
     .pb-head__col.pb__col--align-right ng-if="!openedContact"
-      .pb-head__button.mdi.mdi-sort-alphabetical 
+      a.pb-head__button.mdi.mdi-plus {
+        ng-href="/new"
+      }
+      .pb-head__button.mdi.mdi-sort-alphabetical {
+        ng-click="toggleSortDirection()"
+      }
 
