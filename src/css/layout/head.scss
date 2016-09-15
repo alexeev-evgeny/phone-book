@@ -39,10 +39,12 @@
         }
     }
     &__button {
-        display: block;
+        display: inline-block;
+        vertical-align: middle;
         font-size: 28px;
         color: #fff;
         cursor: pointer;
+        text-decoration: none;
     }
 }
 .pb-head-box {

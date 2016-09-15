@@ -1,6 +1,5 @@
-app.controller 'IndexCtrl', ($scope, dbService) ->
+app.controller 'IndexCtrl', ($scope, $rootScope, dbService) ->
 
-  $scope.contacts = {}
   $scope.url = 'https://phonebook-c9b5.restdb.io/rest/contacts?q={}&h={
     "$fields": {
       "id": 1,
@@ -10,7 +9,8 @@ app.controller 'IndexCtrl', ($scope, dbService) ->
       "email": 1,
       "phone": 1
     } }'
-
+  
+  $scope.contacts = {}
   dbService.load($scope.url).then((data) ->
     $scope.contacts = data
   )
@@ -18,4 +18,3 @@ app.controller 'IndexCtrl', ($scope, dbService) ->
   $scope.closeContact = () ->
     $scope.pageShifted = false
     $scope.openedContact = null
-  
