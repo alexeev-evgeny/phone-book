@@ -10,3 +10,9 @@ app.controller 'ViewCtrl', ($scope, $routeParams, $location, dbService) ->
     )
   else
     $location.path('/')
+
+  $scope.deleteContact = () ->
+    if confirm('Delete a contact?')
+      dbService.delete($scope.url).then(
+        $location.path('/')
+      )

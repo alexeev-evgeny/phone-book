@@ -4,6 +4,7 @@ $background-grey: #e5e5e5;
 $color-orange: #FBC02D;
 $color-light-grey: #e5e5e5;
 $color-green: #65c765;
+$color-red: #F44336;
 
 $color-text: #999;
 $color-text-dark: #333;
@@ -99,5 +100,8 @@ body {
     &:focus {
         outline: none;
         border-bottom: 1px solid $color-green;
+    }
+    &.ng-invalid.ng-not-empty {
+        border-bottom: 1px solid $color-red;
     }
 }

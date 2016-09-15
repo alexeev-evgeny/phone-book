@@ -131,4 +131,9 @@
         position: relative;
         top: 2px;
     }
+    &__icon-edit:before,
+    &__icon-remove:before {
+        font-size: 22px;
+        line-height: 26px; 
+    }
 }

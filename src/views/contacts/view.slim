@@ -14,6 +14,10 @@
           }"
         }
       .pb-view__head__item
+        a.pb-view__button.pb-view__icon-remove.mdi.mdi-close-circle {
+          ng-click="deleteContact()"
+        }
+      .pb-view__head__item
         a.pb-view__button.pb-view__icon-edit.mdi.mdi-border-color {
           ng-href="edit/{{::openedContact._id}}"
         }
