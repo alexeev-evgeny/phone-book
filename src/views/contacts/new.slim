@@ -19,77 +19,85 @@
         }
 
     .pb-view__body
-      .pb-view__col-1-4
-        img.pb-view__avatar ng-src="{{::newContact.avatar}}"
+      .pb-view__row
+        .pb-view__title
+          | Avatar URL:
+        .pb-view__data
+          input.pb-input {
+            type="text"
+            ng-model="newContact.avatar"
+            ng-maxlength="500"
+          }
 
-      .pb-view__col-3-4
-        .pb-view__row
-          .pb-view__title
-            | Name:
-          .pb-view__data
-            input.pb-input {
-              type="text"
-              ng-model="newContact.name"
-              ng-maxlength="100"
-            }
+      .pb-view__row
+        .pb-view__title
+          | Name:
+        .pb-view__data
+          input.pb-input {
+            type="text"
+            ng-model="newContact.name"
+            ng-maxlength="100"
+            ng-required="true"
+          }
 
-        .pb-view__row
-          .pb-view__title
-            | Email:
-          .pb-view__data
-            input.pb-input {
-              type="email"
-              ng-model="newContact.email"
-              ng-pattern="emailPattern"
-              ng-maxlength="100"
-            }
+      .pb-view__row
+        .pb-view__title
+          | Email:
+        .pb-view__data
+          input.pb-input {
+            type="email"
+            ng-model="newContact.email"
+            ng-pattern="emailPattern"
+            ng-maxlength="100"
+            ng-required="true"
+          }
 
-        .pb-view__row
-          .pb-view__title
-            | Phone:
-          .pb-view__data
-            input.pb-input {
-              type="text"
-              ng-maxlength="50"
-              ng-model="newContact.phone"
-            }
+      .pb-view__row
+        .pb-view__title
+          | Phone:
+        .pb-view__data
+          input.pb-input {
+            type="text"
+            ng-maxlength="50"
+            ng-model="newContact.phone"
+          }
 
-        .pb-view__row
-          .pb-view__title
-            | Username:
-          .pb-view__data
-            input.pb-input {
-              type="text"
-              ng-model="newContact.username"
-              ng-maxlength="100"
-            }
+      .pb-view__row
+        .pb-view__title
+          | Username:
+        .pb-view__data
+          input.pb-input {
+            type="text"
+            ng-model="newContact.username"
+            ng-maxlength="100"
+          }
 
-        .pb-view__row
-          .pb-view__title
-            | Company:
-          .pb-view__data
-            input.pb-input {
-              type="text"
-              ng-model="newContact.company.bs"
-              ng-maxlength="150"
-            }
+      .pb-view__row
+        .pb-view__title
+          | Company:
+        .pb-view__data
+          input.pb-input {
+            type="text"
+            ng-model="newContact.company.bs"
+            ng-maxlength="150"
+          }
 
-        .pb-view__row
-          .pb-view__title
-            | Catchphrase:
-          .pb-view__data
-            input.pb-input {
-              type="text"
-              ng-model="newContact.company.catchPhrase"
-              ng-maxlength="250"
-            }
+      .pb-view__row
+        .pb-view__title
+          | Catchphrase:
+        .pb-view__data
+          input.pb-input {
+            type="text"
+            ng-model="newContact.company.catchPhrase"
+            ng-maxlength="250"
+          }
 
-        .pb-view__row
-          .pb-view__title
-            | Website:
-          .pb-view__data
-            input.pb-input {
-              type="text"
-              ng-model="newContact.website"
-              ng-maxlength="50"
-            }
+      .pb-view__row
+        .pb-view__title
+          | Website:
+        .pb-view__data
+          input.pb-input {
+            type="text"
+            ng-model="newContact.website"
+            ng-maxlength="50"
+          }

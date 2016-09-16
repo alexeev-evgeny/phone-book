@@ -15,11 +15,13 @@
             width: 100%;
         }
     }
-    &__col {
+    &__col,
+    &__cell {
         display: inline-block;
         vertical-align: middle;
         font-size: 16px;
         line-height: normal;
+        white-space: nowrap;
     }
     &__col--align-left {
         text-align: left;
@@ -27,8 +29,12 @@
     &__col--align-right {
         text-align: right;
     }
+    &__cell {
+        margin-left: 10px;
+        margin-right: 10px;
+        white-space: normal;
+    }
     &__title {
-        display: block;
         color: #fff;
         font-size: 24px;
         line-height: normal;
@@ -36,6 +42,10 @@
 
         &:visited {
             color: #fff;
+        }
+        &:focus,
+        &:active {
+            outline: none;
         }
     }
     &__button {
@@ -45,6 +55,33 @@
         color: #fff;
         cursor: pointer;
         text-decoration: none;
+        @include transition(0.2s ease);
+
+        &:hover {
+            background-color: #5d6dc5;
+            box-shadow: 0 0 0 5px #5d6dc5;
+        }
+    }
+    &__search {
+        display: inline-block;
+        vertical-align: middle;
+        max-width: 200px;
+
+        &__input {
+            width: 100%;
+            padding: 4px 10px 5px;
+            background-color: #fff;
+            border: none;
+            font-size: 16px;
+            line-height: 20px;
+            @include transition(transform 0.2s ease);
+
+            &:focus {
+                outline: none;
+                @include scale(1.1);
+            }
+        }
+
     }
 }
 .pb-head-box {

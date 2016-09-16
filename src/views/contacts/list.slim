@@ -1,7 +1,7 @@
 .pb-wrap
   .pb-list ng-if="contacts.length > 0"
     a.pb-list__row {
-      ng-repeat="item in contacts | orderBy: 'name' : sortDirection"
+      ng-repeat="item in contacts | orderBy: 'name' : sortDirection | filter: $parent.searchText"
       ng-href="/view/{{item._id}}"
     } 
       .pb-list__col.pb-list__col--align-left

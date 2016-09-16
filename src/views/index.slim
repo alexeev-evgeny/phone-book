@@ -17,13 +17,11 @@ html ng-app="app"
     / endinject
 
   body
-    / .pb-load
-    /   h1.pb-load__title 
-    /     | Application is loading ...
-
-    .pb-head {
-      ng-include="'views/layout/head.html'" 
-      ng-controller="HeadCtrl"
-    }
-    
-    .pb-app ng-view=""
+    div ng-controller="parentCtrl"
+      .pb-head {
+        ng-include="'views/layout/head.html'"
+      }
+      
+      .pb-app {
+        ng-view=""
+      }

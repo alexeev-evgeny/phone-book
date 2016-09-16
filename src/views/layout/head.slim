@@ -4,12 +4,20 @@
       a.pb-head__title {
       	ng-href="/"
       }
-        | Contacts
-    .pb-head__col.pb__col--align-right ng-if="!openedContact"
-      a.pb-head__button.mdi.mdi-plus {
-        ng-href="/new"
-      }
-      .pb-head__button.mdi.mdi-sort-alphabetical {
+        | Contacts    
+
+    .pb-head__col.pb__col--align-right {
+      ng-if="!openedContact"
+    }
+      .pb-head__cell.pb-head__search
+        input.pb-head__search__input {
+          type="text"
+          placeholder="Filter"
+          ng-model="$parent.$parent.searchText"
+        }
+      .pb-head__cell.pb-head__button.mdi.mdi-sort-alphabetical {
         ng-click="toggleSortDirection()"
       }
-
+      a.pb-head__cell.pb-head__button.mdi.mdi-plus {
+        ng-href="/new"
+      }
