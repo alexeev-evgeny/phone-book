@@ -1,11 +1,5 @@
 .pb-wrap
-  pre
-    | {{newContact}}
-
-  form.pb-view#contactsView {
-    name="newContactForm"
-  }
-
+  form.pb-view name="newContactForm"
     .pb-view__head
       .pb-view__head__item
         a.pb-view__button.mdi.mdi-keyboard-backspace {
@@ -14,9 +8,10 @@
       .pb-view__head__item
         .pb-view__button.pb-view__icon-star.mdi {
           ng-class="{
-            'mdi-star-outline': newContact.favorite == true,
-            'mdi-star': newContact.favorite == false
+            'mdi-star-outline': !newContact.favorite,
+            'mdi-star': newContact.favorite
           }"
+          ng-click="newContact.favorite = !newContact.favorite"
         }
       .pb-view__head__item
         .pb-view__button.pb-view__button--green.mdi.mdi-content-save {
@@ -35,6 +30,7 @@
             input.pb-input {
               type="text"
               ng-model="newContact.name"
+              ng-maxlength="100"
             }
 
         .pb-view__row
@@ -44,6 +40,8 @@
             input.pb-input {
               type="email"
               ng-model="newContact.email"
+              ng-pattern="emailPattern"
+              ng-maxlength="100"
             }
 
         .pb-view__row
@@ -52,6 +50,7 @@
           .pb-view__data
             input.pb-input {
               type="text"
+              ng-maxlength="50"
               ng-model="newContact.phone"
             }
 
@@ -62,6 +61,7 @@
             input.pb-input {
               type="text"
               ng-model="newContact.username"
+              ng-maxlength="100"
             }
 
         .pb-view__row
@@ -71,6 +71,7 @@
             input.pb-input {
               type="text"
               ng-model="newContact.company.bs"
+              ng-maxlength="150"
             }
 
         .pb-view__row
@@ -80,6 +81,7 @@
             input.pb-input {
               type="text"
               ng-model="newContact.company.catchPhrase"
+              ng-maxlength="250"
             }
 
         .pb-view__row
@@ -89,4 +91,5 @@
             input.pb-input {
               type="text"
               ng-model="newContact.website"
+              ng-maxlength="50"
             }

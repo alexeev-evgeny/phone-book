@@ -9,8 +9,8 @@
       .pb-view__head__item
         .pb-view__button.pb-view__icon-star.mdi {
           ng-class="{
-            'mdi-star-outline': openedContact.favorite == true,
-            'mdi-star': openedContact.favorite == false
+            'mdi-star-outline': !openedContact.favorite,
+            'mdi-star': openedContact.favorite
           }"
         }
       .pb-view__head__item
