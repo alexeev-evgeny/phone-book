@@ -7,24 +7,23 @@
           ng-href="/"
         }
       .pb-view__head__item
-        .pb-view__button.pb-view__icon-star.mdi {
+        a.pb-view__button.pb-view__icon-edit.mdi.mdi-border-color {
+          ng-href="edit/{{::openedContact._id}}"
+        }
+
+      .pb-view__head__item
+        .pb-view__head__star.pb-view__icon-star.mdi {
           ng-class="{
             'mdi-star-outline': !openedContact.favorite,
             'mdi-star': openedContact.favorite
           }"
         }
-      .pb-view__head__item
-        a.pb-view__button.pb-view__icon-remove.mdi.mdi-close-circle {
-          ng-click="deleteContact()"
-        }
-      .pb-view__head__item
-        a.pb-view__button.pb-view__icon-edit.mdi.mdi-border-color {
-          ng-href="edit/{{::openedContact._id}}"
-        }
 
     .pb-view__body
       .pb-view__col-1-4
-        img.pb-view__avatar ng-src="{{::openedContact.avatar}}"
+        img.pb-view__avatar {
+          ng-src="{{::openedContact.avatar}}"
+        }
 
       .pb-view__col-3-4
         .pb-view__row
@@ -47,25 +46,33 @@
 
         .pb-view__row.pb-view__separator
 
-        .pb-view__row
+        .pb-view__row {
+          ng-if="openedContact.username"
+        }
           .pb-view__title
             | Username:
           .pb-view__data
             | {{::openedContact.username}}
 
-        .pb-view__row
+        .pb-view__row {
+          ng-if="openedContact.company.bs"
+        }
           .pb-view__title
             | Company:
           .pb-view__data
             | {{::openedContact.company.bs}}
 
-        .pb-view__row
+        .pb-view__row {
+          ng-if="openedContact.company.catchPhrase"
+        }
           .pb-view__title
             | Catchphrase:
           .pb-view__data
             | {{::openedContact.company.catchPhrase}}
 
-        .pb-view__row
+        .pb-view__row {
+          ng-if="openedContact.openedContact.website"
+        }
           .pb-view__title
             | Website:
           .pb-view__data

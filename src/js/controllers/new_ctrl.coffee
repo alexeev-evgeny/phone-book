@@ -1,4 +1,4 @@
-app.controller 'NewCtrl', ($scope, $location, dbService) ->
+app.controller 'NewCtrl', ($scope, $location, $log, dbService) ->
 
   $scope.newContact = null
   $scope.url = 'https://phonebook-c9b5.restdb.io/rest/contacts'
@@ -8,6 +8,9 @@ app.controller 'NewCtrl', ($scope, $location, dbService) ->
     switch
       when !$scope.newContactForm.$valid then alert('Form is invalid')
       when !$scope.newContact then alert('Form is empty')
-      else dbService.add($scope.url, $scope.newContact).then(
-              $location.path('/')
+      else dbService.add($scope.url, $scope.newContact).then((result) ->
+              if result.status == 201
+                $location.path('/')
+              else
+                $log.error(result)
             )
