@@ -3,6 +3,7 @@
     a.pb-list__row {
       ng-repeat="item in contacts | orderBy: 'name' : sortDirection | filter: $parent.searchText"
       ng-href="/view/{{item._id}}"
+      ng-if="checkFavoriteState(item.favorite)"
     } 
       .pb-list__col.pb-list__col--align-left
         .pb-list__item.pb-list__avatar {
@@ -20,7 +21,7 @@
           | {{::item.phone}}
         .pb-list__item.pb-list__icon.mdi {
           ng-class="{
-            'mdi-star-outline': item.favorite == true,
-            'mdi-star': item.favorite == false
+            'mdi-star-outline': !item.favorite,
+            'mdi-star': item.favorite
           }"
         } 

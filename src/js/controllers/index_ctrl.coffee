@@ -7,7 +7,8 @@ app.controller 'IndexCtrl', ($scope, $rootScope, dbService) ->
       "avatar": 1,
       "name": 1,
       "email": 1,
-      "phone": 1
+      "phone": 1,
+      "favorite": 1
     } }'
   
   $scope.contacts = {}

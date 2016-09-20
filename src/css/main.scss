@@ -1,13 +1,13 @@
-$color-light-blue: #3F51B5;
-$list-hightlight-color: #3F51B5;
+// ===== COLORS =====
 $background-grey: #e5e5e5;
+$color-light-blue: #3F51B5;
 $color-orange: #FBC02D;
 $color-light-grey: #e5e5e5;
 $color-green: #65c765;
 $color-red: #F44336;
-
 $color-text: #999;
 $color-text-dark: #333;
+$list-hightlight-color: #3F51B5;
 
 body {
     height: 100%;
@@ -87,7 +87,7 @@ body {
     }
 }
 
-// INPUT
+// ===== INPUT =====
 .pb-input {
     width: 100%;
     padding: 4px 0 5px;

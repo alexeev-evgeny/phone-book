@@ -17,7 +17,20 @@
         }
       .pb-head__cell.pb-head__button.mdi.mdi-sort-alphabetical {
         ng-click="toggleSortDirection()"
+        tooltip
+        tooltip-value="'Reverse sort'"
+      }
+      .pb-head__cell.pb-head__button.mdi {
+          ng-class="{
+            'mdi-star-outline': !showOnlyFavorites,
+            'mdi-star': showOnlyFavorites
+          }"
+        ng-click="toggleFavoritesVisible()"
+        tooltip
+        tooltip-value="'Only favorites'"
       }
       a.pb-head__cell.pb-head__button.mdi.mdi-plus {
+        tooltip
+        tooltip-value="'Create contact'"
         ng-href="/new"
       }

@@ -1,0 +1,36 @@
+.pb-tooltip {
+    display: none;
+    padding-top: 15px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 2;
+
+    &__text {
+        display: block;
+        position: relative;
+        padding: 5px 10px;
+        font-size: 14px;
+        background-color: rgba(93,109,197,0.95);;
+        border-radius: 2px;
+        text-align: center;
+
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: -18px;
+            right: 6px;
+            border: 8px solid transparent;
+            border-bottom: 10px solid rgba(93,109,197,0.95);;
+            z-index: 2;
+        }
+    }
+}
+.pb-tooltip-box {
+    position: relative;
+
+    &:hover > .pb-tooltip {
+        display: block;
+    }
+}

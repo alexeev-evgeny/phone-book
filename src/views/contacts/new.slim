@@ -1,5 +1,7 @@
 .pb-wrap
-  form.pb-view name="newContactForm"
+  form.pb-view {
+    name="newContactForm"
+  }
     .pb-view__head
       .pb-view__head__item
         a.pb-view__button.mdi.mdi-keyboard-backspace {
@@ -60,6 +62,7 @@
             type="text"
             ng-maxlength="50"
             ng-model="newContact.phone"
+            ng-pattern="phonePattern"
           }
 
       .pb-view__row
